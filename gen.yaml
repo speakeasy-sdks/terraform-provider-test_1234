@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: eb00f2f7ebea120283b4bd62543db36b
   docVersion: 1.0.0
-  speakeasyVersion: 1.93.1
-  generationVersion: 2.144.7
+  speakeasyVersion: 1.96.1
+  generationVersion: 2.150.0
 generation:
   comments:
     disableComments: false
@@ -14,9 +14,9 @@ generation:
   tagNamespacingDisabled: false
 features:
   terraform:
-    core: 2.92.0
+    core: 2.92.1
     globalServerURLs: 2.82.0
 terraform:
-  version: 0.1.0
+  version: 0.1.1
   author: FHOF
   packageName: Test1234
