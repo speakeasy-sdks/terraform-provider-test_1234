@@ -17,3 +17,31 @@ type ListDataSetsResponse struct {
 	// Returns a list of data sets
 	DataSetList *shared.DataSetList
 }
+
+func (o *ListDataSetsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListDataSetsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListDataSetsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ListDataSetsResponse) GetDataSetList() *shared.DataSetList {
+	if o == nil {
+		return nil
+	}
+	return o.DataSetList
+}

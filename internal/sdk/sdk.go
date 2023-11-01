@@ -50,6 +50,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -62,9 +63,9 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 
 // Test - USPTO Data Set API: The Data Set API (DSAPI) allows the public users to discover and search USPTO exported data sets. This is a generic API that allows USPTO users to make any CSV based data files searchable through API. With the help of GET call, it returns the list of data fields that are searchable. With the help of POST call, data can be fetched based on the filters on the field names. Please note that POST call is used to search the actual data. The reason for the POST call is that it allows users to specify any complex search criteria without worry about the GET size limitations as well as encoding of the input parameters.
 type Test struct {
-	// Metadata - Find out about the data sets
+	// Find out about the data sets
 	Metadata *metadata
-	// Search - Search a data set
+	// Search a data set
 	Search *search
 
 	sdkConfiguration sdkConfiguration
@@ -129,7 +130,7 @@ func (e *ServerScheme) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// WithScheme allows setting the $name variable for url substitution
+// WithScheme allows setting the scheme variable for url substitution
 func WithScheme(scheme ServerScheme) SDKOption {
 	return func(sdk *Test) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -149,15 +150,21 @@ func WithClient(client HTTPClient) SDKOption {
 	}
 }
 
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *Test) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
+	}
+}
+
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Test {
 	sdk := &Test{
 		sdkConfiguration: sdkConfiguration{
-			Language:          "terraform",
+			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.1.1",
-			GenVersion:        "2.150.0",
-			UserAgent:         "speakeasy-sdk/terraform 0.1.1 2.150.0 1.0.0 Test1234",
+			SDKVersion:        "0.2.0",
+			GenVersion:        "2.173.0",
+			UserAgent:         "speakeasy-sdk/go 0.2.0 2.173.0 1.0.0 Test1234",
 			ServerDefaults: []map[string]string{
 				{
 					"scheme": "https",

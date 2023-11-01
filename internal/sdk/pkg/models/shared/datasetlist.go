@@ -13,7 +13,49 @@ type DataSetListApis struct {
 	APIVersionNumber *string `json:"apiVersionNumber,omitempty"`
 }
 
+func (o *DataSetListApis) GetAPIDocumentationURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIDocumentationURL
+}
+
+func (o *DataSetListApis) GetAPIKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *DataSetListApis) GetAPIURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIURL
+}
+
+func (o *DataSetListApis) GetAPIVersionNumber() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIVersionNumber
+}
+
 type DataSetList struct {
 	Apis  []DataSetListApis `json:"apis,omitempty"`
 	Total *int64            `json:"total,omitempty"`
+}
+
+func (o *DataSetList) GetApis() []DataSetListApis {
+	if o == nil {
+		return nil
+	}
+	return o.Apis
+}
+
+func (o *DataSetList) GetTotal() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Total
 }

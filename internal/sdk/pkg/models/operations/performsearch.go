@@ -3,24 +3,89 @@
 package operations
 
 import (
+	"Test1234/internal/sdk/pkg/utils"
 	"net/http"
 )
 
 type PerformSearchRequestBody struct {
 	// Uses Lucene Query Syntax in the format of propertyName:value, propertyName:[num1 TO num2] and date range format: propertyName:[yyyyMMdd TO yyyyMMdd]. In the response please see the 'docs' element which has the list of record objects. Each record structure would consist of all the fields and their corresponding values.
-	Criteria *string `form:"name=criteria"`
+	Criteria *string `default:"*:*" form:"name=criteria"`
 	// Specify number of rows to be returned. If you run the search with default values, in the response you will see 'numFound' attribute which will tell the number of records available in the dataset.
-	Rows *int64 `form:"name=rows"`
+	Rows *int64 `default:"100" form:"name=rows"`
 	// Starting record number. Default value is 0.
-	Start *int64 `form:"name=start"`
+	Start *int64 `default:"0" form:"name=start"`
+}
+
+func (p PerformSearchRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PerformSearchRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PerformSearchRequestBody) GetCriteria() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Criteria
+}
+
+func (o *PerformSearchRequestBody) GetRows() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Rows
+}
+
+func (o *PerformSearchRequestBody) GetStart() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Start
 }
 
 type PerformSearchRequest struct {
 	RequestBody *PerformSearchRequestBody `request:"mediaType=application/x-www-form-urlencoded"`
 	// Name of the dataset. In this case, the default value is oa_citations
-	Dataset string `pathParam:"style=simple,explode=false,name=dataset"`
+	Dataset string `default:"oa_citations" pathParam:"style=simple,explode=false,name=dataset"`
 	// Version of the dataset.
-	Version string `pathParam:"style=simple,explode=false,name=version"`
+	Version string `default:"v1" pathParam:"style=simple,explode=false,name=version"`
+}
+
+func (p PerformSearchRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PerformSearchRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *PerformSearchRequest) GetRequestBody() *PerformSearchRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
+}
+
+func (o *PerformSearchRequest) GetDataset() string {
+	if o == nil {
+		return ""
+	}
+	return o.Dataset
+}
+
+func (o *PerformSearchRequest) GetVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.Version
 }
 
 type PerformSearch200ApplicationJSON struct {
@@ -35,4 +100,32 @@ type PerformSearchResponse struct {
 	RawResponse *http.Response
 	// successful operation
 	PerformSearch200ApplicationJSONObjects []map[string]PerformSearch200ApplicationJSON
+}
+
+func (o *PerformSearchResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PerformSearchResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PerformSearchResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PerformSearchResponse) GetPerformSearch200ApplicationJSONObjects() []map[string]PerformSearch200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.PerformSearch200ApplicationJSONObjects
 }

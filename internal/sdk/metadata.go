@@ -4,6 +4,7 @@ package sdk
 
 import (
 	"Test1234/internal/sdk/pkg/models/operations"
+	"Test1234/internal/sdk/pkg/models/sdkerrors"
 	"Test1234/internal/sdk/pkg/models/shared"
 	"Test1234/internal/sdk/pkg/utils"
 	"bytes"
@@ -65,12 +66,14 @@ func (s *metadata) ListDataSets(ctx context.Context) (*operations.ListDataSetsRe
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.DataSetList
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			var out shared.DataSetList
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
-			res.DataSetList = out
+			res.DataSetList = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -123,12 +126,16 @@ func (s *metadata) ListSearchableFields(ctx context.Context, request operations.
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
 			res.ListSearchableFields200ApplicationJSONString = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
 			res.ListSearchableFields404ApplicationJSONString = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

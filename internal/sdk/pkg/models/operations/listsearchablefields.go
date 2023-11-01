@@ -13,6 +13,20 @@ type ListSearchableFieldsRequest struct {
 	Version string `pathParam:"style=simple,explode=false,name=version"`
 }
 
+func (o *ListSearchableFieldsRequest) GetDataset() string {
+	if o == nil {
+		return ""
+	}
+	return o.Dataset
+}
+
+func (o *ListSearchableFieldsRequest) GetVersion() string {
+	if o == nil {
+		return ""
+	}
+	return o.Version
+}
+
 type ListSearchableFieldsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -24,4 +38,39 @@ type ListSearchableFieldsResponse struct {
 	ListSearchableFields200ApplicationJSONString *string
 	// The combination of dataset name and version is not found in the system or it is not published yet to be consumed by public.
 	ListSearchableFields404ApplicationJSONString *string
+}
+
+func (o *ListSearchableFieldsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListSearchableFieldsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListSearchableFieldsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ListSearchableFieldsResponse) GetListSearchableFields200ApplicationJSONString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ListSearchableFields200ApplicationJSONString
+}
+
+func (o *ListSearchableFieldsResponse) GetListSearchableFields404ApplicationJSONString() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ListSearchableFields404ApplicationJSONString
 }

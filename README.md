@@ -71,7 +71,7 @@ terraform {
   required_providers {
     Test1234 = {
       source  = "FHOF/Test1234"
-      version = "0.1.1"
+      version = "0.2.0"
     }
   }
 }
@@ -111,8 +111,6 @@ TF_REATTACH_PROVIDERS=... terraform apply
 
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 

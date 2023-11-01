@@ -2,21 +2,25 @@ configVersion: 1.0.0
 management:
   docChecksum: eb00f2f7ebea120283b4bd62543db36b
   docVersion: 1.0.0
-  speakeasyVersion: 1.96.1
-  generationVersion: 2.150.0
+  speakeasyVersion: 1.109.2
+  generationVersion: 2.173.0
 generation:
   comments:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
+  repoURL: https://github.com/speakeasy-sdks/terraform-provider-test_1234.git
   sdkClassName: Test
   singleTagPerOp: false
   tagNamespacingDisabled: false
 features:
   terraform:
-    core: 2.92.1
+    constsAndDefaults: 0.1.1
+    core: 2.93.3
     globalServerURLs: 2.82.0
 terraform:
-  version: 0.1.1
+  version: 0.2.0
   author: FHOF
   packageName: Test1234
+  published: true
+  repoSubDirectory: .

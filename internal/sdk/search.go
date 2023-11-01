@@ -4,6 +4,7 @@ package sdk
 
 import (
 	"Test1234/internal/sdk/pkg/models/operations"
+	"Test1234/internal/sdk/pkg/models/sdkerrors"
 	"Test1234/internal/sdk/pkg/utils"
 	"bytes"
 	"context"
@@ -32,11 +33,10 @@ func (s *search) PerformSearch(ctx context.Context, request operations.PerformSe
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "form")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "form", `request:"mediaType=application/x-www-form-urlencoded"`)
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
-
 	debugBody := bytes.NewBuffer([]byte{})
 	debugReader := io.TeeReader(bodyReader, debugBody)
 
@@ -79,11 +79,13 @@ func (s *search) PerformSearch(ctx context.Context, request operations.PerformSe
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out []map[string]operations.PerformSearch200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return res, err
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
 			}
 
 			res.PerformSearch200ApplicationJSONObjects = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 	}
