@@ -88,7 +88,7 @@ func (o *PerformSearchRequest) GetVersion() string {
 	return o.Version
 }
 
-type PerformSearch200ApplicationJSON struct {
+type ResponseBody struct {
 }
 
 type PerformSearchResponse struct {
@@ -99,7 +99,7 @@ type PerformSearchResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// successful operation
-	PerformSearch200ApplicationJSONObjects []map[string]PerformSearch200ApplicationJSON
+	Maps []map[string]ResponseBody
 }
 
 func (o *PerformSearchResponse) GetContentType() string {
@@ -123,9 +123,9 @@ func (o *PerformSearchResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *PerformSearchResponse) GetPerformSearch200ApplicationJSONObjects() []map[string]PerformSearch200ApplicationJSON {
+func (o *PerformSearchResponse) GetMaps() []map[string]ResponseBody {
 	if o == nil {
 		return nil
 	}
-	return o.PerformSearch200ApplicationJSONObjects
+	return o.Maps
 }

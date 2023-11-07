@@ -2,7 +2,7 @@
 
 package shared
 
-type DataSetListApis struct {
+type Apis struct {
 	// A URL to the API console for each API
 	APIDocumentationURL *string `json:"apiDocumentationUrl,omitempty"`
 	// To be used as a dataset parameter value
@@ -13,28 +13,28 @@ type DataSetListApis struct {
 	APIVersionNumber *string `json:"apiVersionNumber,omitempty"`
 }
 
-func (o *DataSetListApis) GetAPIDocumentationURL() *string {
+func (o *Apis) GetAPIDocumentationURL() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIDocumentationURL
 }
 
-func (o *DataSetListApis) GetAPIKey() *string {
+func (o *Apis) GetAPIKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIKey
 }
 
-func (o *DataSetListApis) GetAPIURL() *string {
+func (o *Apis) GetAPIURL() *string {
 	if o == nil {
 		return nil
 	}
 	return o.APIURL
 }
 
-func (o *DataSetListApis) GetAPIVersionNumber() *string {
+func (o *Apis) GetAPIVersionNumber() *string {
 	if o == nil {
 		return nil
 	}
@@ -42,11 +42,11 @@ func (o *DataSetListApis) GetAPIVersionNumber() *string {
 }
 
 type DataSetList struct {
-	Apis  []DataSetListApis `json:"apis,omitempty"`
-	Total *int64            `json:"total,omitempty"`
+	Apis  []Apis `json:"apis,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
-func (o *DataSetList) GetApis() []DataSetListApis {
+func (o *DataSetList) GetApis() []Apis {
 	if o == nil {
 		return nil
 	}

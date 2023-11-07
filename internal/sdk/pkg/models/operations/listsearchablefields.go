@@ -28,16 +28,30 @@ func (o *ListSearchableFieldsRequest) GetVersion() string {
 }
 
 type ListSearchableFieldsResponse struct {
+	// The dataset API for the given version is found and it is accessible to consume.
+	TwoHundredApplicationJSONRes *string
+	// The combination of dataset name and version is not found in the system or it is not published yet to be consumed by public.
+	FourHundredAndFourApplicationJSONRes *string
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// The dataset API for the given version is found and it is accessible to consume.
-	ListSearchableFields200ApplicationJSONString *string
-	// The combination of dataset name and version is not found in the system or it is not published yet to be consumed by public.
-	ListSearchableFields404ApplicationJSONString *string
+}
+
+func (o *ListSearchableFieldsResponse) GetTwoHundredApplicationJSONRes() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TwoHundredApplicationJSONRes
+}
+
+func (o *ListSearchableFieldsResponse) GetFourHundredAndFourApplicationJSONRes() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FourHundredAndFourApplicationJSONRes
 }
 
 func (o *ListSearchableFieldsResponse) GetContentType() string {
@@ -59,18 +73,4 @@ func (o *ListSearchableFieldsResponse) GetRawResponse() *http.Response {
 		return nil
 	}
 	return o.RawResponse
-}
-
-func (o *ListSearchableFieldsResponse) GetListSearchableFields200ApplicationJSONString() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ListSearchableFields200ApplicationJSONString
-}
-
-func (o *ListSearchableFieldsResponse) GetListSearchableFields404ApplicationJSONString() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ListSearchableFields404ApplicationJSONString
 }

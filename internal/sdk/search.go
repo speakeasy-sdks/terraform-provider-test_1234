@@ -13,20 +13,20 @@ import (
 	"net/http"
 )
 
-// search - Search a data set
-type search struct {
+// Search a data set
+type Search struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSearch(sdkConfig sdkConfiguration) *search {
-	return &search{
+func newSearch(sdkConfig sdkConfiguration) *Search {
+	return &Search{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // PerformSearch - Provides search capability for the data set with the given search criteria.
 // This API is based on Solr/Lucene Search. The data is indexed using SOLR. This GET API returns the list of all the searchable field names that are in the Solr Index. Please see the 'fields' attribute which returns an array of field names. Each field or a combination of fields can be searched using the Solr/Lucene Syntax. Please refer https://lucene.apache.org/core/3_6_2/queryparsersyntax.html#Overview for the query syntax. List of field names that are searchable can be determined using above GET api.
-func (s *search) PerformSearch(ctx context.Context, request operations.PerformSearchRequest) (*operations.PerformSearchResponse, error) {
+func (s *Search) PerformSearch(ctx context.Context, request operations.PerformSearchRequest) (*operations.PerformSearchResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/{dataset}/{version}/records", request, nil)
 	if err != nil {
@@ -78,12 +78,12 @@ func (s *search) PerformSearch(ctx context.Context, request operations.PerformSe
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out []map[string]operations.PerformSearch200ApplicationJSON
+			var out []map[string]operations.ResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.PerformSearch200ApplicationJSONObjects = out
+			res.Maps = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}

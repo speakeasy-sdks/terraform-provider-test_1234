@@ -15,19 +15,19 @@ import (
 	"strings"
 )
 
-// metadata - Find out about the data sets
-type metadata struct {
+// Metadata - Find out about the data sets
+type Metadata struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newMetadata(sdkConfig sdkConfiguration) *metadata {
-	return &metadata{
+func newMetadata(sdkConfig sdkConfiguration) *Metadata {
+	return &Metadata{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // ListDataSets - List available data sets
-func (s *metadata) ListDataSets(ctx context.Context) (*operations.ListDataSetsResponse, error) {
+func (s *Metadata) ListDataSets(ctx context.Context) (*operations.ListDataSetsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/"
 
@@ -82,7 +82,7 @@ func (s *metadata) ListDataSets(ctx context.Context) (*operations.ListDataSetsRe
 
 // ListSearchableFields - Provides the general information about the API and the list of fields that can be used to query the dataset.
 // This GET API returns the list of all the searchable field names that are in the oa_citations. Please see the 'fields' attribute which returns an array of field names. Each field or a combination of fields can be searched using the syntax options shown below.
-func (s *metadata) ListSearchableFields(ctx context.Context, request operations.ListSearchableFieldsRequest) (*operations.ListSearchableFieldsResponse, error) {
+func (s *Metadata) ListSearchableFields(ctx context.Context, request operations.ListSearchableFieldsRequest) (*operations.ListSearchableFieldsResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url, err := utils.GenerateURL(ctx, baseURL, "/{dataset}/{version}/fields", request, nil)
 	if err != nil {
@@ -125,7 +125,7 @@ func (s *metadata) ListSearchableFields(ctx context.Context, request operations.
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.ListSearchableFields200ApplicationJSONString = &out
+			res.TwoHundredApplicationJSONRes = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -133,7 +133,7 @@ func (s *metadata) ListSearchableFields(ctx context.Context, request operations.
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			out := string(rawBody)
-			res.ListSearchableFields404ApplicationJSONString = &out
+			res.FourHundredAndFourApplicationJSONRes = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
