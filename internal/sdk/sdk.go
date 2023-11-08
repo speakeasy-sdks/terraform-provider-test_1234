@@ -3,9 +3,9 @@
 package sdk
 
 import (
-	"Test1234/internal/sdk/pkg/utils"
 	"encoding/json"
 	"fmt"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -162,9 +162,9 @@ func New(opts ...SDKOption) *Test {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.3.0",
-			GenVersion:        "2.181.1",
-			UserAgent:         "speakeasy-sdk/go 0.3.0 2.181.1 1.0.0 Test1234",
+			SDKVersion:        "0.4.0",
+			GenVersion:        "2.183.0",
+			UserAgent:         "speakeasy-sdk/go 0.4.0 2.183.0 1.0.0 Test1234",
 			ServerDefaults: []map[string]string{
 				{
 					"scheme": "https",

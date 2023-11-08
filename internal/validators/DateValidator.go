@@ -3,8 +3,8 @@
 package validators
 
 import (
-	"Test1234/internal/sdk/pkg/types"
 	"context"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/types"
 	"github.com/hashicorp/terraform-plugin-framework-validators/helpers/validatordiag"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 )

@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"Test1234/internal/sdk/pkg/utils"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/utils"
 	"net/http"
 )
 

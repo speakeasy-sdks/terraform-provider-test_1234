@@ -3,8 +3,8 @@
 package provider
 
 import (
-	"Test1234/internal/sdk"
 	"context"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"

@@ -1,4 +1,4 @@
-module Test1234
+module github.com/FHOF/terraform-provider-Test1234
 
 go 1.18
 

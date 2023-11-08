@@ -3,12 +3,12 @@
 package sdk
 
 import (
-	"Test1234/internal/sdk/pkg/models/operations"
-	"Test1234/internal/sdk/pkg/models/sdkerrors"
-	"Test1234/internal/sdk/pkg/utils"
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/models/operations"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/models/sdkerrors"
+	"github.com/FHOF/terraform-provider-Test1234/internal/sdk/pkg/utils"
 	"io"
 	"net/http"
 )

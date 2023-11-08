@@ -3,10 +3,10 @@
 package provider
 
 import (
-	tfReflect "Test1234/internal/provider/reflect"
 	"context"
 	"encoding/json"
 	"fmt"
+	tfReflect "github.com/FHOF/terraform-provider-Test1234/internal/provider/reflect"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
