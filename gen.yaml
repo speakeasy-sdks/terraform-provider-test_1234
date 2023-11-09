@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: eb00f2f7ebea120283b4bd62543db36b
   docVersion: 1.0.0
-  speakeasyVersion: 1.115.0
-  generationVersion: 2.183.0
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: Test
@@ -11,10 +11,10 @@ generation:
 features:
   terraform:
     constsAndDefaults: 0.1.1
-    core: 3.3.0
+    core: 3.3.1
     globalServerURLs: 2.82.0
 terraform:
-  version: 0.4.0
+  version: 0.4.1
   author: FHOF
   imports:
     option: openapi
@@ -24,6 +24,8 @@ terraform:
       operations: operations
       shared: shared
       webhooks: webhooks
+  inputModelSuffix: input
+  outputModelSuffix: output
   packageName: Test1234
   published: true
   repoSubDirectory: .
