@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: eb00f2f7ebea120283b4bd62543db36b
   docVersion: 1.0.0
-  speakeasyVersion: 1.120.1
-  generationVersion: 2.189.1
+  speakeasyVersion: 1.120.3
+  generationVersion: 2.192.1
 generation:
   comments: {}
   sdkClassName: Test
@@ -13,10 +13,10 @@ generation:
 features:
   terraform:
     constsAndDefaults: 0.1.1
-    core: 3.4.4
+    core: 3.4.5
     globalServerURLs: 2.82.0
 terraform:
-  version: 0.5.2
+  version: 0.5.3
   author: FHOF
   imports:
     option: openapi
