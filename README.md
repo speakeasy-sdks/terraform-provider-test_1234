@@ -71,7 +71,7 @@ terraform {
   required_providers {
     Test1234 = {
       source  = "FHOF/Test1234"
-      version = "0.6.1"
+      version = "0.6.2"
     }
   }
 }
@@ -109,6 +109,8 @@ TF_REATTACH_PROVIDERS=... terraform apply
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
+
+
 <!-- End Available Resources and Operations [operations] -->
 
 
