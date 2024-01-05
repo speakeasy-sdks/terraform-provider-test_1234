@@ -1,20 +1,10 @@
-configVersion: 1.0.0
-management:
-  docChecksum: eb00f2f7ebea120283b4bd62543db36b
-  docVersion: 1.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+configVersion: 2.0.0
 generation:
-  comments: {}
   sdkClassName: Test
-  repoURL: https://github.com/speakeasy-sdks/terraform-provider-test_1234.git
   usageSnippets:
     optionalPropertyRendering: withExample
-features:
-  terraform:
-    constsAndDefaults: 0.1.2
-    core: 3.5.1
-    globalServerURLs: 2.82.1
+  fixes:
+    nameResolutionDec2023: false
 terraform:
   version: 0.6.2
   author: FHOF
@@ -29,5 +19,3 @@ terraform:
   inputModelSuffix: input
   outputModelSuffix: output
   packageName: Test1234
-  published: true
-  repoSubDirectory: .
