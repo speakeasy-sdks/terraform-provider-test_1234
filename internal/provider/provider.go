@@ -5,7 +5,6 @@ package provider
 import (
 	"context"
 	"github.com/FHOF/terraform-provider-Test1234/internal/sdk"
-
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
