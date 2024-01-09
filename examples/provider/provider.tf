@@ -2,7 +2,7 @@ terraform {
   required_providers {
     Test1234 = {
       source  = "FHOF/Test1234"
-      version = "0.7.0"
+      version = "0.7.1"
     }
   }
 }
