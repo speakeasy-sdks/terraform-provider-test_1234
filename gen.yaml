@@ -5,8 +5,9 @@ generation:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
 terraform:
-  version: 0.7.3
+  version: 0.8.0
   author: FHOF
   imports:
     option: openapi
