@@ -29,9 +29,9 @@ func (o *ListSearchableFieldsRequest) GetVersion() string {
 
 type ListSearchableFieldsResponse struct {
 	// The dataset API for the given version is found and it is accessible to consume.
-	TwoHundredApplicationJSONRes *string
+	TwoHundredApplicationJSONString *string
 	// The combination of dataset name and version is not found in the system or it is not published yet to be consumed by public.
-	FourHundredAndFourApplicationJSONRes *string
+	FourHundredAndFourApplicationJSONString *string
 	// HTTP response content type for this operation
 	ContentType string
 	// HTTP response status code for this operation
@@ -40,18 +40,18 @@ type ListSearchableFieldsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *ListSearchableFieldsResponse) GetTwoHundredApplicationJSONRes() *string {
+func (o *ListSearchableFieldsResponse) GetTwoHundredApplicationJSONString() *string {
 	if o == nil {
 		return nil
 	}
-	return o.TwoHundredApplicationJSONRes
+	return o.TwoHundredApplicationJSONString
 }
 
-func (o *ListSearchableFieldsResponse) GetFourHundredAndFourApplicationJSONRes() *string {
+func (o *ListSearchableFieldsResponse) GetFourHundredAndFourApplicationJSONString() *string {
 	if o == nil {
 		return nil
 	}
-	return o.FourHundredAndFourApplicationJSONRes
+	return o.FourHundredAndFourApplicationJSONString
 }
 
 func (o *ListSearchableFieldsResponse) GetContentType() string {
