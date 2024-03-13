@@ -162,9 +162,9 @@ func New(opts ...SDKOption) *Test {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.9.0",
-			GenVersion:        "2.279.1",
-			UserAgent:         "speakeasy-sdk/go 0.9.0 2.279.1 1.0.0 Test1234",
+			SDKVersion:        "0.9.1",
+			GenVersion:        "2.280.6",
+			UserAgent:         "speakeasy-sdk/go 0.9.1 2.280.6 1.0.0 Test1234",
 			ServerDefaults: []map[string]string{
 				{
 					"scheme": "https",

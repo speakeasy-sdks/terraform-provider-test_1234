@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"net/http"
 )
 
 var _ provider.Provider = &Test1234Provider{}
@@ -61,6 +62,7 @@ func (p *Test1234Provider) Configure(ctx context.Context, req provider.Configure
 
 	opts := []sdk.SDKOption{
 		sdk.WithServerURL(ServerURL),
+		sdk.WithClient(http.DefaultClient),
 	}
 	client := sdk.New(opts...)
 
